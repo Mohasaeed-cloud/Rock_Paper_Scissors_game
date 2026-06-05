@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Function library example</title>
+  <style>
+
+  </style>
+  </head>
+<body>
+  <script>
+    function get_computer_choice()
+    {
+      let a=Math.floor(Math.random()*3);
+      let choice;
+      a === 0 ? choice = "rock" :
+      a === 1 ? choice = "paper" :
+      choice = "scissors";
+      return choice;
+    }
+    function get_human_choice()
+    {
+      let a = prompt("Choose between rock,scissors,paper");
+      return a.toLowerCase();
+    }
+    let human_score = 0;
+    let computer_score = 0;
+    let tie = 0;
+    function play_round(human_choice,computer_choice)
+    {
+      if(human_choice === "paper" && computer_choice === "rock")
+        {
+          human_score +=1;
+          return console.log(`You win! ${human_choice} beats ${computer_choice}`);
+        }
+      if(human_choice === "rock" && computer_choice === "paper")
+        {
+          computer_score +=1;
+          return console.log(`You lose! ${computer_choice} beats ${human_choice}`);
+        }
+      if(human_choice === "rock" && computer_choice === "scissors")
+        {
+          human_score +=1;
+          return console.log(`You win! ${human_choice} beats ${computer_choice}`);
+        }
+      if(human_choice === "scissors" && computer_choice === "rock")
+        {
+          computer_score +=1;
+          return console.log(`You lose! ${computer_choice} beats ${human_choice}`);
+        }
+      if(human_choice === "paper" && computer_choice === "scissors")
+        {
+          computer_score +=1;
+          return console.log(`You lose! ${computer_choice} beats ${human_choice}`);
+        }
+      if(human_choice === "scissors" && computer_choice === "paper")
+        {
+          human_score +=1;
+          return console.log(`You win! ${human_choice} beats ${computer_choice}`);
+        }
+      else
+      {
+        tie +=1;
+        return console.log(`It's a tie! Both chose ${human_choice}`);
+      }
+    }
+    function play_game()
+    {
+      for(let i=0; i<=4; i++)
+      {
+        play_round(get_human_choice(),get_computer_choice());
+      }
+      console.log(`Human: ${human_score}`);
+      console.log(`Computer: ${computer_score}`);
+      console.log(`Ties: ${tie}`);
+    }
+    play_game()
+</script>
+</body>
+</html>
