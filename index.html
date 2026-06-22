@@ -65,17 +65,59 @@
         return console.log(`It's a tie! Both chose ${human_choice}`);
       }
     }
-    function play_game()
-    {
-      for(let i=0; i<=4; i++)
-      {
-        play_round(get_human_choice(),get_computer_choice());
+    const paperButton = document.createElement("button");
+    paperButton.textContent = "Paper";
+    paperButton.addEventListener('click',function () {
+       play_round("paper",get_computer_choice());
+       pHumanScore.textContent = "Human score : "+human_score;
+       pComputerScore.textContent = "Computer score : "+computer_score;
+       checkWinner();
+    });
+    const rockButton = document.createElement("button");
+    rockButton.textContent = "Rock";
+    rockButton.addEventListener('click',function () {
+      play_round("rock",get_computer_choice());
+      pHumanScore.textContent = "Human score : "+human_score;
+      pComputerScore.textContent = "Computer score : "+computer_score;
+      checkWinner();
+    });
+    const scissorsButton = document.createElement("button");
+    scissorsButton.textContent = "scissors";
+    scissorsButton.addEventListener('click',function () {
+      play_round("scissors",get_computer_choice());
+       pHumanScore.textContent = "Human score : "+human_score;
+       pComputerScore.textContent = "Computer score : "+computer_score;
+       checkWinner();
+    });
+    document.body.appendChild(paperButton);
+    document.body.appendChild(rockButton);
+    document.body.appendChild(scissorsButton);
+    const divResults = document.createElement("div");
+    document.body.appendChild(divResults);
+    const pHumanScore = document.createElement("p");
+    divResults.appendChild(pHumanScore);
+    const pComputerScore = document.createElement("p");
+    divResults.appendChild(pComputerScore);
+    function checkWinner() {
+      if (human_score === 5) {
+          alert("Human wins!");
       }
-      console.log(`Human: ${human_score}`);
-      console.log(`Computer: ${computer_score}`);
-      console.log(`Ties: ${tie}`);
+      else if (computer_score === 5) {
+          alert("Computer wins!");
+      }
     }
-    play_game()
+    // function play_game()
+    // {
+    //   for(let i=0; i<=4; i++)
+    //   {
+    //     play_round(get_human_choice(),get_computer_choice());
+    //   }
+    //   console.log(`Human: ${human_score}`);
+    //   console.log(`Computer: ${computer_score}`);
+    //   console.log(`Ties: ${tie}`);
+    // }
+    // play_round(get_human_choice(),get_computer_choice());
+    // play_game()
 </script>
 </body>
 </html>
